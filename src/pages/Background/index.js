@@ -1,4 +1,5 @@
 const Sentiment = require('sentiment');
+import secrets from 'secrets';
 
 const sentiment = new Sentiment();
 const extras = [
@@ -48,7 +49,7 @@ const getTweets = async (keyword, next_token, level = 1) => {
   const headers = new Headers();
   headers.append(
     'Authorization',
-    'Bearer INSERT_BEARER_HERE'
+    `Bearer ${secrets.bearer}`
   );
 
   const requestOptions = {
