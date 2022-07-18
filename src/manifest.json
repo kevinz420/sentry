@@ -1,0 +1,32 @@
+{
+  "name": "Sentry",
+  "description": "Sentry uses Tweet sentiment and transaction data analysis to detect unsafe smart contracts.",
+  "homepage_url": "http://chrome.google.com/webstore",
+  "version": "0.0.1",
+  "version_name": "0.0.1",
+  "manifest_version": 3,
+  "minimum_chrome_version": "88",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://api.twitter.com/*"], 
+  "web_accessible_resources" : [
+    {
+      "resources": ["script.bundle.js", "content.styles.css", "icon-128.png", "icon-34.png", "default.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "options_page": "options.html",
+  "background": { "service_worker": "background.bundle.js" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon-34.png"
+  },
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["contentScript.bundle.js"]
+    }
+  ]
+}
